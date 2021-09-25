@@ -1,5 +1,5 @@
-import wrapper
+import backend
 
 if __name__ == '__main__':
-    backend = wrapper.LoadDLL()
-    print(backend[1](101))
+    backend.LoadDLL() # Load backend
+    backend.Log("LOL")
