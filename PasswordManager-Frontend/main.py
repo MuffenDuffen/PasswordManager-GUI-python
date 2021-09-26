@@ -11,7 +11,7 @@ def Enter():
 
 if __name__ == '__main__':
     backend.LoadDLL() # Load backend
-    backend.Log("LeL")
+    backend.Log("LoL")
 
     # Window
     root = tk.Tk()
