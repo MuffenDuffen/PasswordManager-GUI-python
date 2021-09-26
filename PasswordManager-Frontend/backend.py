@@ -1,7 +1,6 @@
 import ctypes
 import platform
 
-
 def LoadDLL():
     if platform.system() == "Windows":  # Multi-Platform
         global lib
@@ -9,5 +8,4 @@ def LoadDLL():
 
 # Log function
 def Log(message):
-    string = str(message).encode('utf-8')
-    lib.Log(ctypes.c_char_p(string))
+    lib.Log(ctypes.c_char_p(str(message).encode('utf-8')))
