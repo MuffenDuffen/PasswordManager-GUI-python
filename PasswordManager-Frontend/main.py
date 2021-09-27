@@ -5,7 +5,7 @@ import tkinter.ttk as ttk
 #region Button Functions
 
 def Enter():
-    print(input.get())
+    backend.Log(input.get())
 
 #endregion
 
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     root.rowconfigure(2, weight=3)
 
     # Creating label
-    label1 = ttk.Label(root, text="Password Manager", font=('Courier', 40))
+    label1 = ttk.Label(root, text="Password Manager", font=('JetBrains Mono', 40))
     label1.grid(row=1, column=1, columnspan=2, padx=40, sticky='s')
 
     # Creating Input Field

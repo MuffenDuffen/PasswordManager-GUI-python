@@ -7,6 +7,6 @@
 class cDecryptor
 {
 public:
-    DLL static void PrevChar(std::string& input);
-    DLL static void InvertBits(std::string& input);
+    static void PrevChar(std::string& input);
+    static void InvertBits(std::string& input);
 };

@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "../EncryptorClass.h"
 
 void cEncryptor::NextChar(std::string& input)

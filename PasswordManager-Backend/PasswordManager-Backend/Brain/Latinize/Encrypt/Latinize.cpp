@@ -6,7 +6,7 @@
 std::string NumberToLatin(const int number)
 {
     auto numberString = std::to_string(number);
-    
+
     auto ones = new std::map<std::string, std::string>{
         {"1", "Unos"},
         {"2", "Duo"},
@@ -89,7 +89,7 @@ std::string NumberToLatin(const int number)
     for (int i = 0; i < numberString.length(); i++)
     {
         std::string stringifier(1, numberString[i]);
-        
+
         if (numberString[i] != '0')
         {
             latin += dictionaries[i].at(stringifier) + ", ";

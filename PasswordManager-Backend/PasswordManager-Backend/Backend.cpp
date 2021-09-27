@@ -6,12 +6,17 @@
 
 //Interactions with Python
 extern "C" {
-	DLL void Log(const char* ptr)
-	{
-		for (unsigned int i = 0; i < strlen(ptr); ++i)
-		{
-			std::cout << ptr[i];
-		}
-		std::cout << std::endl;
-	}
+    DLL void Log(const char* ptr)
+    {
+        for (unsigned int i = 0; i < strlen(ptr); ++i)
+        {
+            std::cout << ptr[i];
+        }
+        std::cout << std::endl;
+    }
+
+    DLL bool CheckPass(const char* pass)
+    {
+        return true;
+    }
 }
