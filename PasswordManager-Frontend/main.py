@@ -10,8 +10,8 @@ def Enter():
 #endregion
 
 if __name__ == '__main__':
+    
     backend.LoadDLL() # Load backend
-    backend.Log("LoL")
 
     # Window
     root = tk.Tk()
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     root.rowconfigure(2, weight=3)
 
     # Creating label
-    label1 = ttk.Label(root, text="Password Manager", font=('JetBrains Mono', 40))
+    label1 = ttk.Label(root, text="Password Manager", font=('Segoe UI Semibold', 40))
     label1.grid(row=1, column=1, columnspan=2, padx=40, sticky='s')
 
     # Creating Input Field

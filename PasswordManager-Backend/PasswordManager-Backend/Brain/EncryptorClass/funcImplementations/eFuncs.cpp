@@ -41,3 +41,9 @@ void cEncryptor::ReverseString(std::string& input)
 {
     std::reverse(input.begin(), input.end());
 }
+
+void cEncryptor::StringLoLifier(std::string& input)
+{
+	
+}
+

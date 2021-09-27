@@ -7,6 +7,7 @@
 class cEncryptor
 {
 public:
+	
     static void NextChar(std::string& input);
     static void InvertBits(std::string& input);
     //Latinize
@@ -17,6 +18,7 @@ public:
     //PythagoranTheorem
     void ReverseString(std::string& input);
     //StringLoLifier
+    static void StringLoLifier(std::string& input);
     //Circumference
     //BitReverser
 };
