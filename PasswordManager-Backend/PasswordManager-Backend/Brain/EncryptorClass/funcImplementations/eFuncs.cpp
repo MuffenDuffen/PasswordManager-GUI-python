@@ -2,6 +2,11 @@
 
 #include "../EncryptorClass.h"
 
+const char* cEncryptor::Encryptstring(const char* input)
+{
+    return input;
+}
+
 void cEncryptor::NextChar(std::string& input)
 {
     for (auto& c : input)

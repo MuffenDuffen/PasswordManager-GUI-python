@@ -7,6 +7,7 @@
 class cEncryptor
 {
 public:
+    static const char* Encryptstring(const char* input);
     static void NextChar(std::string& input);
     static void InvertBits(std::string& input);
     //Latinize
