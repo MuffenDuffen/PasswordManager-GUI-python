@@ -5,7 +5,7 @@ import pathlib
 def LoadDLL():
     if platform.system() == "Windows":  # Multi-Platform
         global lib
-        lib = ctypes.CDLL(__file__[:35] + "PasswordManager-Backend/x64/Release/PasswordManager-Backend.dll")
+        lib = ctypes.CDLL(__file__[:35] + "\PasswordManager-Backend/x64/Release/PasswordManager-Backend.dll")
 
 # Log function
 def Log(message):
