@@ -5,7 +5,7 @@ import tkinter.ttk as ttk
 #region Button Functions
 
 def Enter():
-    backend.Log(input.get())
+    backend.CheckPass(input.get())
 
 #endregion
 
