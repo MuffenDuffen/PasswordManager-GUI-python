@@ -5,6 +5,7 @@ def LoadDLL():
     if platform.system() == "Windows":  # Multi-Platform
         global lib
         lib = ctypes.CDLL("../PasswordManager-Backend/x64/Release/PasswordManager-Backend.dll")
+        lib.CheckPass()
 
 # Log function
 def Log(message):

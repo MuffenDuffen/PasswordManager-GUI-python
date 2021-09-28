@@ -7,7 +7,7 @@
 class cEncryptor
 {
 public:
-    static const char* Encryptstring(const char* input);
+    static const char* EncryptString(const char* input);
     static void NextChar(std::string& input);
     static void InvertBits(std::string& input);
     //Latinize
@@ -17,8 +17,7 @@ public:
     static void CharAdder(std::string& input, const std::string& pass_phrase);
     //PythagoranTheorem
     void ReverseString(std::string& input);
-    //StringLoLifier
-    static void StringLoLifier(std::string& input);
+    static void Expander(std::string& input);
     //Circumference
     //BitReverser
 };

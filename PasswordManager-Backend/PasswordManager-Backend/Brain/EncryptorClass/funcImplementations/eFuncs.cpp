@@ -1,10 +1,19 @@
 #include <iostream>
+#include <algorithm>
 
 #include "../EncryptorClass.h"
 
-const char* cEncryptor::Encryptstring(const char* input)
+const char* cEncryptor::EncryptString(const char* input)
 {
-    return input;
+	auto encrypt = new std::string(input);
+
+    std::srand(encrypt->length());
+
+    Expander(*encrypt);
+
+    std::replace(encrypt->begin(), encrypt->end(), '\n', 'Q');
+	
+    return encrypt->c_str();
 }
 
 void cEncryptor::NextChar(std::string& input)
@@ -47,8 +56,15 @@ void cEncryptor::ReverseString(std::string& input)
     std::reverse(input.begin(), input.end());
 }
 
-void cEncryptor::StringLoLifier(std::string& input)
+void cEncryptor::Expander(std::string& input)
 {
-	
+    const int rn = rand() % input.length(); // Random number
+
+    for (int i = 0; i < rn; ++i)
+    {
+        const int random = rand() % input.length();
+        char c = rand() % 255;
+        input.insert(random, &c);
+    }
 }
 

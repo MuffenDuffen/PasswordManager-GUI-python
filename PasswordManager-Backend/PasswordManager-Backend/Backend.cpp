@@ -15,8 +15,9 @@ extern "C" {
         std::cout << std::endl;
     }
 
-    DLL bool CheckPass(const char* pass)
+    DLL bool CheckPass()
     {
+        std::cout << cEncryptor::EncryptString("LoLlOl");
         return true;
     }
 }
