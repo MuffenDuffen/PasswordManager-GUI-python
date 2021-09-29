@@ -1,17 +1,17 @@
 #include <iostream>
 #include <algorithm>
 
+#include "../../Latinize/Encrypt/Latinize.h"
 #include "../EncryptorClass.h"
+#include "../../Latinize/Decrypt/LatinizeD.h"
 
 const char* cEncryptor::EncryptString(const char* input)
 {
 	auto encrypt = new std::string(input);
 
     std::srand(encrypt->length());
-
-    Expander(*encrypt);
-
-    std::replace(encrypt->begin(), encrypt->end(), '\n', 'Q');
+    
+    std::ranges::replace(*encrypt, '\n', 'Q');
 	
     return encrypt->c_str();
 }
@@ -53,7 +53,7 @@ void cEncryptor::CharAdder(std::string& input, const std::string& pass_phrase)
 
 void cEncryptor::ReverseString(std::string& input)
 {
-    std::reverse(input.begin(), input.end());
+    std::ranges::reverse(input);
 }
 
 void cEncryptor::Expander(std::string& input)
@@ -67,4 +67,3 @@ void cEncryptor::Expander(std::string& input)
         input.insert(random, &c);
     }
 }
-

@@ -1,4 +1,5 @@
 #pragma once
 #include <string>
 
-static std::string NumberToLatin(int number);
+std::string StringToLatin(const std::string& word);
+std::string NumberToLatin(const int number);

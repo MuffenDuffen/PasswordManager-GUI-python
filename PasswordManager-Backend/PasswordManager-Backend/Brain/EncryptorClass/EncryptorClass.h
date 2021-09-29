@@ -8,6 +8,8 @@ class cEncryptor
 {
 public:
     static const char* EncryptString(const char* input);
+    ///Encryption Methods
+    
     static void NextChar(std::string& input);
     static void InvertBits(std::string& input);
     //Latinize
@@ -16,7 +18,7 @@ public:
     //HexStuff
     static void CharAdder(std::string& input, const std::string& pass_phrase);
     //PythagoranTheorem
-    void ReverseString(std::string& input);
+    static void ReverseString(std::string& input);
     static void Expander(std::string& input);
     //Circumference
     //BitReverser

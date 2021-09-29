@@ -1,7 +1,22 @@
 #include "Latinize.h"
 
+#include <iostream>
 #include <map>
 #include <vector>
+
+std::string StringToLatin(const std::string& word)
+{
+    std::string result = "";
+
+    for (const auto c : word)
+    {
+        result.append(NumberToLatin(c) + " , ");
+    }
+
+    result = result.substr(0, result.length() - 3);
+
+    return result;
+}
 
 std::string NumberToLatin(const int number)
 {
@@ -95,5 +110,8 @@ std::string NumberToLatin(const int number)
             latin += dictionaries[i].at(stringifier) + ", ";
         }
     }
+
+    latin = latin.substr(0, latin.length() - 2);
+
     return latin;
 }
