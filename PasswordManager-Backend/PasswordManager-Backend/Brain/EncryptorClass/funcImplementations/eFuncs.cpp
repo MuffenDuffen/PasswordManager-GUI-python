@@ -41,12 +41,17 @@ std::string cEncryptor::StringToLatin(std::string& input)
     return std::string(StringToLatin(input));
 }
 
-void cEncryptor::Ceasarion(std::string& input, unsigned long long encrypt_shift)
+void cEncryptor::Ceasarion(std::string& input, const unsigned long long encrypt_shift)
 {
     for (auto& c : input)
     {
         c += encrypt_shift;
     }
+}
+
+std::string cEncryptor::HexStuff(const std::string& input)
+{
+    return std::string(StringToHex(input));
 }
 
 void cEncryptor::CharAdder(std::string& input, const std::string& pass_phrase)
