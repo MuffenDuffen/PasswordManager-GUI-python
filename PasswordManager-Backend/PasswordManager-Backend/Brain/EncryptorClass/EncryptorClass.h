@@ -7,12 +7,12 @@
 class cEncryptor
 {
 public:
-    static const char* EncryptString(const char* input);
+    static const char* EncryptString(std::string input);
     ///Encryption Methods
-    
+
     static void NextChar(std::string& input);
     static void InvertBits(std::string& input);
-    //Latinize
+    static std::string StringToLatin(std::string& input);
     static void Ceasarion(std::string& input, unsigned long long encrypt_shift);
     //RomanNumeralStuff
     //HexStuff

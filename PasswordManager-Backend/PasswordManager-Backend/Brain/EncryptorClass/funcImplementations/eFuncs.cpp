@@ -1,18 +1,22 @@
 #include <iostream>
 #include <algorithm>
 
-#include "../../Latinize/Encrypt/Latinize.h"
 #include "../EncryptorClass.h"
+#include "../../HexStuff/Decrypt/HexStuffD.h"
+#include "../../HexStuff/Encrypt/HexStuffE.h"
 #include "../../Latinize/Decrypt/LatinizeD.h"
+#
 
-const char* cEncryptor::EncryptString(const char* input)
+const char* cEncryptor::EncryptString(std::string input)
 {
-	auto encrypt = new std::string(input);
+    auto encrypt = new std::string(input);
 
     std::srand(encrypt->length());
+
+    //Encrypt/Decrypt
     
     std::ranges::replace(*encrypt, '\n', 'Q');
-	
+
     return encrypt->c_str();
 }
 
@@ -30,6 +34,11 @@ void cEncryptor::InvertBits(std::string& input)
     {
         c = ~c;
     }
+}
+
+std::string cEncryptor::StringToLatin(std::string& input)
+{
+    return std::string(StringToLatin(input));
 }
 
 void cEncryptor::Ceasarion(std::string& input, unsigned long long encrypt_shift)

@@ -26,19 +26,18 @@ std::string LatinToString(std::string input)
     const auto strings = Split(input, " , ");
 
     std::string result = "";
-    
+
     for (const auto s : strings)
     {
         result += static_cast<char>(LatinToNumber(s));
     }
-    
+
     return result;
 }
 
 int LatinToNumber(const std::string input)
 {
-    const auto theMapOfDoom = new std::map<std::string, int>
-    {
+    const auto theMapOfDoom = new std::map<std::string, int>{
         {"Unos", 1},
         {"Duo", 2},
         {"Tres", 3},
@@ -94,7 +93,7 @@ int LatinToNumber(const std::string input)
         {"Octingenti Milia", 800000},
         {"Nongenti Milia", 900000}
     };
-    
+
     int result = 0;
 
     const auto numsInLatin = Split(input, ", ");
@@ -103,6 +102,6 @@ int LatinToNumber(const std::string input)
     {
         result += theMapOfDoom->at(s);
     }
-    
+
     return result;
 }
