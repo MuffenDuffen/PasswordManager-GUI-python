@@ -1,5 +1,6 @@
 #pragma once
-#define DLL __declspec(dllexport)
+
+#define DDLL _declspec(dllexport)
 
 //Includes
 #include <string>
@@ -15,7 +16,7 @@ public:
     static std::string StringToLatin(std::string& input);
     static void Ceasarion(std::string& input, unsigned long long encrypt_shift);
     //RomanNumeralStuff
-    static std::string HexStuff(const std::string& input);
+    DDLL static std::string HexStuff(const std::string& input);
     static void CharAdder(std::string& input, const std::string& pass_phrase);
     //PythagoranTheorem
     static void ReverseString(std::string& input);
