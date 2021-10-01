@@ -1,6 +1,6 @@
 // Main file
 #include <iostream>
-#include "Brain/Classes/Encryptor.h"
+#include "Brain/Classes/Encrypt_Decrypt/Encryptor.h"
 
 #define DLL _declspec(dllexport)
 
@@ -15,13 +15,13 @@ extern "C" {
 		std::cout << std::endl;
 	}
 
-	DLL bool CheckPass(const char* password)
+	DLL bool CheckPass(const char* password, unsigned long long key[], const unsigned long long encrypt_shift, const std::wstring pass_phrase)
 	{
 		std::string passStr(password);
 
 		const std::wstring pass(passStr.begin(), passStr.end());
 		
-		std::cout << cEncryptor::EncryptString(pass) << std::endl;
+		std::cout << cEncryptor::EncryptString(pass, key, encrypt_shift, pass_phrase) << std::endl;
 		return true;
 	}
 

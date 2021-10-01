@@ -15,9 +15,9 @@
 #include "FuncClasses/PythagoranTheorem.h"
 #include "FuncClasses/Reverse.h"
 
-const char* cEncryptor::EncryptString(const std::wstring input)
+const char* cEncryptor::EncryptString(const std::wstring input, unsigned long long key[], const unsigned long long encrypt_shift, const std::wstring pass_phrase)
 {
-    return cEncryptString::EncryptString(input);
+    return cEncryptString::EncryptString(input, key, encrypt_shift, pass_phrase);
 }
 
 void cEncryptor::NextChar(std::wstring& input)

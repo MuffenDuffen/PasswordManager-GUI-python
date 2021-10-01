@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 
-#include "../PasswordManager-Backend/Brain/Classes/Decryptor.h"
-#include "../PasswordManager-Backend/Brain/Classes/Encryptor.h"
+#include "../PasswordManager-Backend/Brain/Classes/Encrypt_Decrypt/Decryptor.h"
+#include "../PasswordManager-Backend/Brain/Classes/Encrypt_Decrypt/Encryptor.h"
 
 int main()
 {
