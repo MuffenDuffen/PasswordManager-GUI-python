@@ -6,7 +6,8 @@ def LoadDLL():
         global lib
         lib = ctypes.CDLL("../PasswordManager-Backend/x64/Release/PasswordManager-Backend.dll")
         lib.CheckPass.restype = ctypes.c_bool
-        lib.GetCredentials.restype = ctypes.c_char_p
+        lib.GetCredentials.restype = ctypes.c_void_p
+        lib.Free.argtypes = [ctypes.c_void_p, ctypes.c_int]
 
 # Log function
 def Log(message):
@@ -17,7 +18,12 @@ def CheckPass(password):
 
 def GetCredentials():
     _return = lib.GetCredentials()
-    string = _return.value
-    lib.Free(ctypes.c_void_p(_return))
+    string = ctypes.cast(_return, ctypes.c_char_p).value
+    lib.Free(_return, 0)
 
-    return string.split('\u241f')
+    creds = string.split('\u001d')
+
+    for i in creds:
+        i = i.split('\u001f')
+
+    return creds
