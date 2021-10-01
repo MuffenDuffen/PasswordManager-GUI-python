@@ -1,6 +1,6 @@
 // Main file
 #include <iostream>
-#include "Brain/EncryptorClass/EncryptorClass.h"
+#include "Brain/Classes/Encryptor.h"
 
 #define DLL _declspec(dllexport)
 
