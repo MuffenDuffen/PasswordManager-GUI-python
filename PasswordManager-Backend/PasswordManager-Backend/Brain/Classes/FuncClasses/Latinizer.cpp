@@ -2,13 +2,13 @@
 
 #include "../LatinizeBackend/lBackend.h"
 
-std::string cLatinizer::StringToLatin(const std::string input)
+std::wstring cLatinizer::StringToLatin(const std::wstring input)
 {
-    std::string result = "";
+    std::wstring result = L"";
 
     for (const auto c : input)
     {
-        result.append(IntToLatin(c) + " , ");
+        result.append(IntToLatin(c) + L" , ");
     }
 
     result = result.substr(0, result.length() - 3);
@@ -16,11 +16,11 @@ std::string cLatinizer::StringToLatin(const std::string input)
     return result;
 }
 
-std::string cLatinizer::LatinToString(const std::string input)
+std::wstring cLatinizer::LatinToString(const std::wstring input)
 {
-    const auto strings = Split(input, " , ");
+    const auto strings = Split(input, L" , ");
 
-    std::string result = "";
+    std::wstring result = L"";
 
     for (const auto s : strings)
     {

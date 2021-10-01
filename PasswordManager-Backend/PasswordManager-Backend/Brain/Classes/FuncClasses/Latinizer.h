@@ -4,6 +4,6 @@
 class cLatinizer
 {
 public:
-    static std::string StringToLatin(std::string input);
-    static std::string LatinToString(std::string input);
+    static std::wstring StringToLatin(std::wstring input);
+    static std::wstring LatinToString(std::wstring input);
 };

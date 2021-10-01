@@ -14,67 +14,67 @@
 #include "FuncClasses/Reverse.h"
 #include "FuncClasses/RNS.h"
 
-const char* cDecryptor::DecryptString(const std::string input)
+const char* cDecryptor::DecryptString(const std::wstring input)
 {
     return cEncryptString::DeryptString(input);
 }
 
-void cDecryptor::PrevChar(std::string& input)
+void cDecryptor::PrevChar(std::wstring& input)
 {
     return cChar::PrevChar(input);
 }
 
-void cDecryptor::InvertBits(std::string& input)
+void cDecryptor::InvertBits(std::wstring& input)
 {
     return cInvertBits::InvertBits(input);
 }
 
-std::string cDecryptor::LatinizerD(const std::string input)
+std::wstring cDecryptor::LatinizerD(const std::wstring input)
 {
     return cLatinizer::LatinToString(input);
 }
 
-void cDecryptor::CeasarionD(std::string& input, const unsigned long long encrypt_shift)
+void cDecryptor::CeasarionD(std::wstring& input, const unsigned long long encrypt_shift)
 {
     return cCeasarion::CeasarionD(input, encrypt_shift);
 }
 
-std::string cDecryptor::FromRomanNumeral(const std::string input)
+std::wstring cDecryptor::FromRomanNumeral(const std::wstring input)
 {
     return cRns::RomanNumeralToString(input);
 }
 
-std::string cDecryptor::FromHex(const std::string input)
+std::wstring cDecryptor::FromHex(const std::wstring input)
 {
     return cHexStuff::FromHex(input);
 }
 
-void cDecryptor::CharRemover(const std::string& input, const std::string pass_phrase)
+void cDecryptor::CharRemover(const std::wstring& input, const std::wstring pass_phrase)
 {
     return cCharAdder::CharRemover(input, pass_phrase);
 }
 
-void cDecryptor::PythagoranTheoremD(std::string& input)
+void cDecryptor::PythagoranTheoremD(std::wstring& input)
 {
     return cPythagoranTheorem::PythagoranTheoremD(input);
 }
 
-void cDecryptor::ReverseString(std::string& input)
+void cDecryptor::ReverseString(std::wstring& input)
 {
     return cReverse::ReverseString(input);
 }
 
-std::string cDecryptor::LoLifierD(const std::string input)
+std::wstring cDecryptor::LoLifierD(const std::wstring input)
 {
     return cLoLifier::UnLoLifier(input);
 }
 
-void cDecryptor::CircD(const std::string& input)
+void cDecryptor::CircD(const std::wstring& input)
 {
     return cCirc::ReversedGetCircumferenceOfCharWithEntireText(input);
 }
 
-void cDecryptor::BitReverserD(std::string& input)
+void cDecryptor::BitReverserD(std::wstring& input)
 {
     return cBitReverser::BitReverserLeL(input);
 }

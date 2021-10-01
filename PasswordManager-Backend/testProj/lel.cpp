@@ -11,11 +11,6 @@ int main()
     auto decr = new cDecryptor();
 
     std::wstring txt = L"LeessasdqwdasdawregsL";
-
-    enc->BitReverser(txt);
-    std::wcout << txt << std::endl;
-    decr->BitReverserD(txt);
-    std::wcout << txt << std::endl;
     
     return 0;
 }

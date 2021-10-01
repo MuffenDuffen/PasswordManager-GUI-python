@@ -1,15 +1,15 @@
 ﻿#include "LoLifier.h"
 
-std::string cLoLifier::LoLifier(std::string input)
+std::wstring cLoLifier::LoLifier(std::wstring input)
 {
-    for (auto i = 0; i < input.length(); i++) if (i % 2 != 0) input = input.insert(i, "L");
+    for (auto i = 0; i < input.length(); i++) if (i % 2 != 0) input = input.insert(i, L"L");
 
     return input;
 }
 
-std::string cLoLifier::UnLoLifier(const std::string input)
+std::wstring cLoLifier::UnLoLifier(const std::wstring input)
 {
-    std::string result = "";
+    std::wstring result = L"";
     
     for (auto i = 0; i < input.length(); i++)
     {

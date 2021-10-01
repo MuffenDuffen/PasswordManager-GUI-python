@@ -1,6 +1,6 @@
 ﻿#include "CharAdder.h"
 
-void cCharAdder::CharAdder(const std::string& input, const std::string pass_phrase)
+void cCharAdder::CharAdder(const std::wstring& input, const std::wstring pass_phrase)
 {
     for (const auto c : pass_phrase)
     {
@@ -11,7 +11,7 @@ void cCharAdder::CharAdder(const std::string& input, const std::string pass_phra
     }
 }
 
-void cCharAdder::CharRemover(const std::string& input, const std::string pass_phrase)
+void cCharAdder::CharRemover(const std::wstring& input, const std::wstring pass_phrase)
 {
     for (const auto c : pass_phrase)
     {

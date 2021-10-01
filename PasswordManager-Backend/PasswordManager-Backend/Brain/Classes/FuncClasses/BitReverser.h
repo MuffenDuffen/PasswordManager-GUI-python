@@ -4,5 +4,5 @@
 class cBitReverser
 {
 public:
-    static void BitReverserLeL(std::string& input);
+    static void BitReverserLeL(std::wstring& input);
 };

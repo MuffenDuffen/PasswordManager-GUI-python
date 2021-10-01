@@ -11,17 +11,17 @@ inline char SingleDigitPreprocees(const int n)
     return 0;
 }
 
-inline std::string DecimalTo(int decimal, const int base = 16)
+inline std::wstring DecimalTo(int decimal, const int base = 16)
 {
     std::stack<char> remainders;
-    if(decimal == 0) return "0";
+    if(decimal == 0) return L"0";
     while(decimal > 0)
     {
         char rem = SingleDigitPreprocees(decimal%base);
         decimal = decimal/base;
         remainders.push(rem);
     }
-    std::string anyBase = ""; 
+    std::wstring anyBase = L""; 
     while(!remainders.empty())
     {
         anyBase += remainders.top();
@@ -30,7 +30,7 @@ inline std::string DecimalTo(int decimal, const int base = 16)
     return anyBase;
 }
 
-inline int ToDecimal(const std::string number, const int base)
+inline int ToDecimal(const std::wstring number, const int base)
 {
     int decimal = 0;
     const int size = number.length();

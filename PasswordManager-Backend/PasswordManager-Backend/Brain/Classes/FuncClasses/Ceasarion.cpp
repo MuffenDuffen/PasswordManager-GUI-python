@@ -1,6 +1,6 @@
 ﻿#include "Ceasarion.h"
 
-void cCeasarion::CeasarionE(std::string& input, unsigned long long encrypt_shift)
+void cCeasarion::CeasarionE(std::wstring& input, unsigned long long encrypt_shift)
 {
     for (auto& c : input)
     {
@@ -8,7 +8,7 @@ void cCeasarion::CeasarionE(std::string& input, unsigned long long encrypt_shift
     }
 }
 
-void cCeasarion::CeasarionD(std::string& input, unsigned long long encrypt_shift)
+void cCeasarion::CeasarionD(std::wstring& input, unsigned long long encrypt_shift)
 {
     for (auto& c : input)
     {

@@ -4,6 +4,6 @@
 class cRns
 {
 public:
-    static std::string StringToRomanNumeral(std::string input);
-    static std::string RomanNumeralToString(std::string input);
+    static std::wstring StringToRomanNumeral(std::wstring input);
+    static std::wstring RomanNumeralToString(std::wstring input);
 };

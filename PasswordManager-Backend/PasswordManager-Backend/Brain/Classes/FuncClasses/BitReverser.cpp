@@ -2,13 +2,13 @@
 
 #include "../HexStuffBackend/HexStuffBackend.h"
 
-void cBitReverser::BitReverserLeL(std::string& input)
+void cBitReverser::BitReverserLeL(std::wstring& input)
 {
     for (auto& c : input)
     {
         auto binary = DecimalTo(c, 2);
 
-        while (binary.length() < 8) binary.insert(0, "0");
+        while (binary.length() < 16) binary.insert(0, L"0");
 
         std::reverse(binary.begin(), binary.end());
 

@@ -4,5 +4,5 @@
 class cInvertBits
 {
 public:
-    static void InvertBits(std::string& input);
+    static void InvertBits(std::wstring& input);
 };

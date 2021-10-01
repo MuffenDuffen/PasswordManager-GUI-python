@@ -4,5 +4,5 @@
 class cReverse
 {
 public:
-    static void ReverseString(std::string& input);
+    static void ReverseString(std::wstring& input);
 };

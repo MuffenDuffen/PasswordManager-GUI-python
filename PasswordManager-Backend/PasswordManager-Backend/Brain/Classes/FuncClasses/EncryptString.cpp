@@ -1,11 +1,11 @@
 ﻿#include "EncryptString.h"
 
-const char* cEncryptString::EncryptString(std::string input)
+const char* cEncryptString::EncryptString(std::wstring input)
 {
     return "LeL";
 }
 
-const char* cEncryptString::DeryptString(std::string input)
+const char* cEncryptString::DeryptString(std::wstring input)
 {
     return "LeL";
 }

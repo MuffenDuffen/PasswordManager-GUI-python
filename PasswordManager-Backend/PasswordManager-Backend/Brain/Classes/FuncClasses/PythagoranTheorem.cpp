@@ -1,7 +1,7 @@
 ﻿#include "PythagoranTheorem.h"
 #include <math.h>
 
-void cPythagoranTheorem::PythagoranTheoremE(std::string& input)
+void cPythagoranTheorem::PythagoranTheoremE(std::wstring& input)
 {
     for (auto& c : input)
     {
@@ -9,7 +9,7 @@ void cPythagoranTheorem::PythagoranTheoremE(std::string& input)
     }
 }
 
-void cPythagoranTheorem::PythagoranTheoremD(std::string& input)
+void cPythagoranTheorem::PythagoranTheoremD(std::wstring& input)
 {
     for (auto& c : input)
     {

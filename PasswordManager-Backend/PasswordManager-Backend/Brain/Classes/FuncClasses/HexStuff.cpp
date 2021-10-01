@@ -3,13 +3,13 @@
 #include "../HexStuffBackend/HexStuffBackend.h"
 #include "../LatinizeBackend/lBackend.h"
 
-std::string cHexStuff::ToHex(const std::string input)
+std::wstring cHexStuff::ToHex(const std::wstring input)
 {
-    std::string result = "";
+    std::wstring result = L"";
     
     for (const auto c : input)
     {
-        result += DecimalTo(c) + ",";
+        result += DecimalTo(c) + L",";
     }
 
     result = result.substr(0, result.length() - 1);
@@ -17,11 +17,11 @@ std::string cHexStuff::ToHex(const std::string input)
     return result;
 }
 
-std::string cHexStuff::FromHex(const std::string input)
+std::wstring cHexStuff::FromHex(const std::wstring input)
 {
-    std::string result = "";
+    std::wstring result = L"";
 
-    for (const auto ss = Split(input, ","); auto s : ss)
+    for (const auto ss = Split(input, L","); auto s : ss)
     {
         result += static_cast<char>(ToDecimal(s, 16));
     }

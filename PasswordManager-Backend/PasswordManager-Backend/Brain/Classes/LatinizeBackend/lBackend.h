@@ -3,12 +3,12 @@
 #include <string>
 #include <vector>
 
-inline std::vector<std::string> Split(std::string str, const std::string token)
+inline std::vector<std::wstring> Split(std::wstring str, const std::wstring token)
 {
-    std::vector<std::string> result;
+    std::vector<std::wstring> result;
     while (str.size())
     {
-        if (const int index = str.find(token); index != std::string::npos)
+        if (const int index = str.find(token); index != std::wstring::npos)
         {
             result.push_back(str.substr(0, index));
             str = str.substr(index + token.size());
@@ -17,84 +17,85 @@ inline std::vector<std::string> Split(std::string str, const std::string token)
         else
         {
             result.push_back(str);
-            str = "";
+
+            str = L"";
         }
     }
     return result;
 }
 
-inline std::string IntToLatin(const int number)
+inline std::wstring IntToLatin(const int number)
 {
     auto numberString = std::to_string(number);
 
-    auto ones = new std::map<std::string, std::string>{
-        {"1", "Unos"},
-        {"2", "Duo"},
-        {"3", "Tres"},
-        {"4", "Quattuor"},
-        {"5", "Quinque"},
-        {"6", "Sex"},
-        {"7", "Septem"},
-        {"8", "Octo"},
-        {"9", "Novem"}
+    auto ones = new std::map<std::wstring, std::wstring>{
+        {L"1", L"Unos"},
+        {L"2", L"Duo"},
+        {L"3", L"Tres"},
+        {L"4", L"Quattuor"},
+        {L"5", L"Quinque"},
+        {L"6", L"Sex"},
+        {L"7", L"Septem"},
+        {L"8", L"Octo"},
+        {L"9", L"Novem"}
     };
-    auto tens = new std::map<std::string, std::string>{
-        {"1", "Decem"},
-        {"2", "Viginti"},
-        {"3", "Traginta"},
-        {"4", "Quadraginta"},
-        {"5", "Quinquaginta"},
-        {"6", "Sexaginta"},
-        {"7", "Septuaginta"},
-        {"8", "Octoginta"},
-        {"9", "Nonaginta"}
+    auto tens = new std::map<std::wstring, std::wstring>{
+        {L"1", L"Decem"},
+        {L"2", L"Viginti"},
+        {L"3", L"Traginta"},
+        {L"4", L"Quadraginta"},
+        {L"5", L"Quinquaginta"},
+        {L"6", L"Sexaginta"},
+        {L"7", L"Septuaginta"},
+        {L"8", L"Octoginta"},
+        {L"9", L"Nonaginta"}
     };
-    auto hundreds = new std::map<std::string, std::string>{
-        {"1", "Centum"},
-        {"2", "Ducenti"},
-        {"3", "Trecenti"},
-        {"4", "Quadrigenti"},
-        {"5", "Quingenti"},
-        {"6", "Sescenti"},
-        {"7", "Septigenti"},
-        {"8", "Octingenti"},
-        {"9", "Nongenti"}
+    auto hundreds = new std::map<std::wstring, std::wstring>{
+        {L"1", L"Centum"},
+        {L"2", L"Ducenti"},
+        {L"3", L"Trecenti"},
+        {L"4", L"Quadrigenti"},
+        {L"5", L"Quingenti"},
+        {L"6", L"Sescenti"},
+        {L"7", L"Septigenti"},
+        {L"8", L"Octingenti"},
+        {L"9", L"Nongenti"}
     };
-    auto thousands = new std::map<std::string, std::string>{
-        {"1", "Mille"},
-        {"2", "Duo Mille"},
-        {"3", "Tres Mille"},
-        {"4", "Quattuor Mille"},
-        {"5", "Quinque Milia"},
-        {"6", "Sex Milia"},
-        {"7", "Septem Milia"},
-        {"8", "Octo Milia"},
-        {"9", "Novem Milia"},
+    auto thousands = new std::map<std::wstring, std::wstring>{
+        {L"1", L"Mille"},
+        {L"2", L"Duo Mille"},
+        {L"3", L"Tres Mille"},
+        {L"4", L"Quattuor Mille"},
+        {L"5", L"Quinque Milia"},
+        {L"6", L"Sex Milia"},
+        {L"7", L"Septem Milia"},
+        {L"8", L"Octo Milia"},
+        {L"9", L"Novem Milia"},
     };
-    auto tenthousands = new std::map<std::string, std::string>{
-        {"1", "Decem Milia"},
-        {"2", "Viginti Milia"},
-        {"3", "Triginta Milia"},
-        {"4", "Quadraginta Milia"},
-        {"5", "Quinquaginta Milia"},
-        {"6", "Sexaginta Milia"},
-        {"7", "Septuaginta Milia"},
-        {"8", "Octoginta Milia"},
-        {"9", "Nonaginta Milia"},
+    auto tenthousands = new std::map<std::wstring, std::wstring>{
+        {L"1", L"Decem Milia"},
+        {L"2", L"Viginti Milia"},
+        {L"3", L"Triginta Milia"},
+        {L"4", L"Quadraginta Milia"},
+        {L"5", L"Quinquaginta Milia"},
+        {L"6", L"Sexaginta Milia"},
+        {L"7", L"Septuaginta Milia"},
+        {L"8", L"Octoginta Milia"},
+        {L"9", L"Nonaginta Milia"},
     };
-    auto hundredThousands = new std::map<std::string, std::string>{
-        {"1", "Centum Milia"},
-        {"2", "Ducenti Milia"},
-        {"3", "Trecenti Milia"},
-        {"4", "Quadragenti Milia"},
-        {"5", "Quingenti Milia"},
-        {"6", "Sescenti Milia"},
-        {"7", "Septingenti Milia"},
-        {"8", "Octingenti Milia"},
-        {"9", "Nongenti Milia"}
+    auto hundredThousands = new std::map<std::wstring, std::wstring>{
+        {L"1", L"Centum Milia"},
+        {L"2", L"Ducenti Milia"},
+        {L"3", L"Trecenti Milia"},
+        {L"4", L"Quadragenti Milia"},
+        {L"5", L"Quingenti Milia"},
+        {L"6", L"Sescenti Milia"},
+        {L"7", L"Septingenti Milia"},
+        {L"8", L"Octingenti Milia"},
+        {L"9", L"Nongenti Milia"}
     };
 
-    std::vector<std::map<std::string, std::string>> dictionaries;
+    std::vector<std::map<std::wstring, std::wstring>> dictionaries;
     dictionaries.push_back(*hundredThousands);
     dictionaries.push_back(*tenthousands);
     dictionaries.push_back(*thousands);
@@ -102,17 +103,17 @@ inline std::string IntToLatin(const int number)
     dictionaries.push_back(*tens);
     dictionaries.push_back(*ones);
 
-    std::string latin = "";
+    std::wstring latin = L"";
 
     while (numberString.length() < 6) numberString = numberString.insert(0, "0");
 
     for (int i = 0; i < numberString.length(); i++)
     {
-        std::string stringifier(1, numberString[i]);
+        std::wstring stringifier(1, numberString[i]);
 
         if (numberString[i] != '0')
         {
-            latin += dictionaries[i].at(stringifier) + ", ";
+            latin += dictionaries[i].at(stringifier) + L", ";
         }
     }
 
@@ -121,68 +122,68 @@ inline std::string IntToLatin(const int number)
     return latin;
 }
 
-inline int LatinToNumber(const std::string input)
+inline int LatinToNumber(const std::wstring input)
 {
-    const auto theMapOfDoom = new std::map<std::string, int>{
-        {"Unos", 1},
-        {"Duo", 2},
-        {"Tres", 3},
-        {"Quattuor", 4},
-        {"Quinque", 5},
-        {"Sex", 6},
-        {"Septem", 7},
-        {"Octo", 8},
-        {"Novem", 9},
-        {"Decem", 10},
-        {"Viginti", 20},
-        {"Traginta", 30},
-        {"Quadraginta", 40},
-        {"Quinquaginta", 50},
-        {"Sexaginta", 60},
-        {"Septuaginta", 70},
-        {"Octoginta", 80},
-        {"Nonaginta", 90},
-        {"Centum", 100},
-        {"Ducenti", 200},
-        {"Trecenti", 300},
-        {"Quadrigenti", 400},
-        {"Quingenti", 500},
-        {"Sescenti", 600},
-        {"Septigenti", 700},
-        {"Octingenti", 800},
-        {"Nongenti", 900},
-        {"Mille", 1000},
-        {"Duo Mille", 2000},
-        {"Tres Mille", 3000},
-        {"Quattuor Mille", 4000},
-        {"Quinque Milia", 5000},
-        {"Sex Milia", 6000},
-        {"Septem Milia", 7000},
-        {"Octo Milia", 8000},
-        {"Novem Milia", 9000},
-        {"Decem Milia", 10000},
-        {"Viginti Milia", 20000},
-        {"Triginta Milia", 30000},
-        {"Quadraginta Milia", 40000},
-        {"Quinquaginta Milia", 50000},
-        {"Sexaginta Milia", 60000},
-        {"Septuaginta Milia", 70000},
-        {"Octoginta Milia", 80000},
-        {"Nonaginta Milia", 90000},
-        {"Centum Milia", 100000},
-        {"Ducenti Milia", 200000},
-        {"Trecenti Milia", 300000},
-        {"Quadragenti Milia", 400000},
-        {"Quingenti Milia", 500000},
-        {"Sescenti Milia", 600000},
-        {"Septingenti Milia", 700000},
-        {"Octingenti Milia", 800000},
-        {"Nongenti Milia", 900000}
+    const auto theMapOfDoom = new std::map<std::wstring, int>{
+        {L"Unos", 1},
+        {L"Duo", 2},
+        {L"Tres", 3},
+        {L"Quattuor", 4},
+        {L"Quinque", 5},
+        {L"Sex", 6},
+        {L"Septem", 7},
+        {L"Octo", 8},
+        {L"Novem", 9},
+        {L"Decem", 10},
+        {L"Viginti", 20},
+        {L"Traginta", 30},
+        {L"Quadraginta", 40},
+        {L"Quinquaginta", 50},
+        {L"Sexaginta", 60},
+        {L"Septuaginta", 70},
+        {L"Octoginta", 80},
+        {L"Nonaginta", 90},
+        {L"Centum", 100},
+        {L"Ducenti", 200},
+        {L"Trecenti", 300},
+        {L"Quadrigenti", 400},
+        {L"Quingenti", 500},
+        {L"Sescenti", 600},
+        {L"Septigenti", 700},
+        {L"Octingenti", 800},
+        {L"Nongenti", 900},
+        {L"Mille", 1000},
+        {L"Duo Mille", 2000},
+        {L"Tres Mille", 3000},
+        {L"Quattuor Mille", 4000},
+        {L"Quinque Milia", 5000},
+        {L"Sex Milia", 6000},
+        {L"Septem Milia", 7000},
+        {L"Octo Milia", 8000},
+        {L"Novem Milia", 9000},
+        {L"Decem Milia", 10000},
+        {L"Viginti Milia", 20000},
+        {L"Triginta Milia", 30000},
+        {L"Quadraginta Milia", 40000},
+        {L"Quinquaginta Milia", 50000},
+        {L"Sexaginta Milia", 60000},
+        {L"Septuaginta Milia", 70000},
+        {L"Octoginta Milia", 80000},
+        {L"Nonaginta Milia", 90000},
+        {L"Centum Milia", 100000},
+        {L"Ducenti Milia", 200000},
+        {L"Trecenti Milia", 300000},
+        {L"Quadragenti Milia", 400000},
+        {L"Quingenti Milia", 500000},
+        {L"Sescenti Milia", 600000},
+        {L"Septingenti Milia", 700000},
+        {L"Octingenti Milia", 800000},
+        {L"Nongenti Milia", 900000}
     };
 
     int result = 0;
 
-    for (const auto numsInLatin = Split(input, ", "); auto s : numsInLatin)
+    for (const auto numsInLatin = Split(input, L", "); auto s : numsInLatin)
     {
         result += theMapOfDoom->at(s);
     }

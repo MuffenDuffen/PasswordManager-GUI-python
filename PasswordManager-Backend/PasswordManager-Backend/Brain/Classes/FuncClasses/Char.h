@@ -4,6 +4,6 @@
 class cChar
 {
 public:
-    static void NextChar(std::string& input);
-    static void PrevChar(std::string& input);
+    static void NextChar(std::wstring& input);
+    static void PrevChar(std::wstring& input);
 };

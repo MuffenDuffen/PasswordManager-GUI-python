@@ -1,6 +1,6 @@
 ﻿#include "Reverse.h"
 
-void cReverse::ReverseString(std::string& input)
+void cReverse::ReverseString(std::wstring& input)
 {
     const int n = input.length();
     

@@ -17,7 +17,11 @@ extern "C" {
 
 	DLL bool CheckPass(const char* password)
 	{
-		std::cout << cEncryptor::EncryptString(password) << std::endl;
+		std::string passStr(password);
+
+		const std::wstring pass(passStr.begin(), passStr.end());
+		
+		std::cout << cEncryptor::EncryptString(pass) << std::endl;
 		return true;
 	}
 

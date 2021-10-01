@@ -3,16 +3,16 @@
 #include "../LatinizeBackend/lBackend.h"
 #include "../RNSBackend/RNSBackend.h"
 
-std::string cRns::StringToRomanNumeral(const std::string input)
+std::wstring cRns::StringToRomanNumeral(const std::wstring input)
 {
-    std::string result = "";
+    std::wstring result = L"";
     
     for (const auto c : input)
     {
         auto l = ToRoman(c);
         l = l.substr(0, l.length() - 1);
         
-        result += l + " , ";
+        result += l + L" , ";
     }
 
     result = result.substr(0, result.length() - 3);
@@ -20,11 +20,11 @@ std::string cRns::StringToRomanNumeral(const std::string input)
     return result;
 }
 
-std::string cRns::RomanNumeralToString(const std::string input)
+std::wstring cRns::RomanNumeralToString(const std::wstring input)
 {
-    std::string result = "";
+    std::wstring result = L"";
 
-    for (const auto numsInRn = Split(input, " , "); const auto s : numsInRn)
+    for (const auto numsInRn = Split(input, L" , "); const auto s : numsInRn)
     {
         result += static_cast<char>(FromRoman(s));
     }

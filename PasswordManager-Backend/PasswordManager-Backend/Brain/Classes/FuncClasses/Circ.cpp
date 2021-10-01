@@ -3,12 +3,12 @@
 #include <cmath>
 #include <random>
 
-void cCirc::GetCircumferenceOfCharWithEntireText(const std::string& input)
+void cCirc::GetCircumferenceOfCharWithEntireText(const std::wstring& input)
 {
     for (auto c : input) c = GetCircumferenceOfChar(c);
 }
 
-void cCirc::ReversedGetCircumferenceOfCharWithEntireText(const std::string& input)
+void cCirc::ReversedGetCircumferenceOfCharWithEntireText(const std::wstring& input)
 {
     for (auto c : input) c = ReversedGetCircumferenceOfChar(c);
 }

@@ -1,6 +1,6 @@
 ﻿#include "Char.h"
 
-void cChar::NextChar(std::string& input)
+void cChar::NextChar(std::wstring& input)
 {
     for (auto& c : input)
     {
@@ -8,7 +8,7 @@ void cChar::NextChar(std::string& input)
     }
 }
 
-void cChar::PrevChar(std::string& input)
+void cChar::PrevChar(std::wstring& input)
 {
     for (auto& c : input)
     {
