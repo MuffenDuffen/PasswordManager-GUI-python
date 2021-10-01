@@ -1,13 +1,15 @@
 ﻿#pragma once
 #include <string>
+#include <vector>
 
 #define DDLL __declspec(dllexport)
 
 class cEncryptor
 {
 public:
-    DDLL static const char* EncryptString(const std::wstring input, unsigned long long key[], const unsigned long long encrypt_shift, const std::wstring
-                                          pass_phrase);
+    DDLL static const wchar_t* EncryptString(const std::wstring input, std::vector<unsigned long long> key,
+                                             const unsigned long long encrypt_shift, const std::wstring
+                                             pass_phrase);
     
     DDLL static void NextChar(std::wstring& input);
 
