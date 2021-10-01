@@ -1,20 +1,29 @@
-﻿#include "Latinize.h"
+#pragma once
+#include <map>
+#include <string>
+#include <vector>
 
-std::string cLatinize::LatinizeE(const std::string& word)
+inline std::vector<std::string> Split(std::string str, const std::string token)
 {
-    std::string result = "";
-
-    for (const auto c : word)
+    std::vector<std::string> result;
+    while (str.size())
     {
-        result.append(NumberToLatin(c) + " , ");
+        if (const int index = str.find(token); index != std::string::npos)
+        {
+            result.push_back(str.substr(0, index));
+            str = str.substr(index + token.size());
+            if (str.size() == 0)result.push_back(str);
+        }
+        else
+        {
+            result.push_back(str);
+            str = "";
+        }
     }
-
-    result = result.substr(0, result.length() - 3);
-
     return result;
 }
 
-std::string cLatinize::NumberToLatin(const int number)
+inline std::string IntToLatin(const int number)
 {
     auto numberString = std::to_string(number);
 
@@ -112,42 +121,7 @@ std::string cLatinize::NumberToLatin(const int number)
     return latin;
 }
 
-std::string cLatinize::LatinizerD(const std::string& input)
-{
-    const auto strings = Split(input, " , ");
-
-    std::string result = "";
-
-    for (const auto s : strings)
-    {
-        result += static_cast<char>(LatinToNumber(s));
-    }
-
-    return result;
-}
-
-std::vector<std::string> cLatinize::Split(std::string str, const std::string token)
-{
-    std::vector<std::string> result;
-    while (str.size())
-    {
-        const int index = str.find(token);
-        if (index != std::string::npos)
-        {
-            result.push_back(str.substr(0, index));
-            str = str.substr(index + token.size());
-            if (str.size() == 0)result.push_back(str);
-        }
-        else
-        {
-            result.push_back(str);
-            str = "";
-        }
-    }
-    return result;
-}
-
-int cLatinize::LatinToNumber(const std::string input)
+inline int LatinToNumber(const std::string input)
 {
     const auto theMapOfDoom = new std::map<std::string, int>{
         {"Unos", 1},
@@ -208,9 +182,7 @@ int cLatinize::LatinToNumber(const std::string input)
 
     int result = 0;
 
-    const auto numsInLatin = Split(input, ", ");
-
-    for (auto s : numsInLatin)
+    for (const auto numsInLatin = Split(input, ", "); auto s : numsInLatin)
     {
         result += theMapOfDoom->at(s);
     }

@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 
 #include "../PasswordManager-Backend/Brain/Classes/Encryptor.h"
-#include "../PasswordManager-Backend/Brain/Classes/FuncClasses/Latinize.h"
 
 int main()
 {
@@ -9,9 +8,7 @@ int main()
 
     auto enc = new cEncryptor();
 
-    std::string lel = enc->LatinizerE("124");
-
-    std::cout << lel << std::endl;
+    const std::string txt = "LeL";
     
     return 0;
 }
