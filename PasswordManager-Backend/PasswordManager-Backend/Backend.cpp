@@ -27,7 +27,7 @@ extern "C" {
 		return result;
 	}
 
-	DLL void Free(const void* ptr, int type)
+	DLL void Free(const void* ptr, const int type)
 	{
 		std::cout << "Deleting object at " << ptr << std::endl;
 
@@ -39,6 +39,7 @@ extern "C" {
 		case 1: 
 			delete[] static_cast<const int*>(ptr);
 			break;
+		default: ;
 		}
 	}
 }

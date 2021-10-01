@@ -1,6 +1,6 @@
 ﻿#include "Latinizer.h"
 
-#include "../../LatinizeBackend/lBackend.h"
+#include "../LatinizeBackend/lBackend.h"
 
 std::string cLatinizer::StringToLatin(const std::string input)
 {

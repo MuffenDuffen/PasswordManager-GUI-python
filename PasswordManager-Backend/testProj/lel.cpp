@@ -8,7 +8,11 @@ int main()
 
     auto enc = new cEncryptor();
 
-    const std::string txt = "LeL";
+    std::string txt = "LeL";
+
+    enc->BitReverser(txt);
+    
+    std::cout << txt << std::endl;
     
     return 0;
 }
