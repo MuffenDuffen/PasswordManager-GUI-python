@@ -4,6 +4,6 @@
 class cCharAdder
 {
 public:
-    static void CharAdder(const std::wstring& input, const std::wstring pass_phrase);
+    static void CharAdder(std::wstring& input, const std::wstring pass_phrase);
     static void CharRemover(const std::wstring& input, std::wstring pass_phrase);
 };

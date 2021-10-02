@@ -8,20 +8,21 @@ int main()
 {
     std::cout << "Gello, World!" << std::endl;
 
-    auto enc = new cEncryptor();
-    auto decr = new cDecryptor();
-    auto cred = new cCredentialStuff();
+    const auto enc = new cEncryptor();
+    const auto decr = new cDecryptor();
+    const auto cred = new cCredentialStuff();
 
     std::wstring mPass = L"HahaIsakIsBad245";
     
-    auto key = cred->GetEncryptionKey(mPass);
-    auto shift = cred->GetShift(mPass);
-    auto passPhrase = cred->GetPassPhrase(mPass);
+    const auto key = cred->GetEncryptionKey(mPass);
+    const auto shift = cred->GetShift(mPass);
+    const auto passPhrase = cred->GetPassPhrase(mPass);
+    
+    auto k = std::vector<unsigned long long>();
 
-    for (auto k : key)
-    {
-        std::cout << k << std::endl;
-    }
+    k.push_back(3);
+    
+    auto i = enc->EncryptString(mPass, k, shift, passPhrase);
     
     return 0;
 }

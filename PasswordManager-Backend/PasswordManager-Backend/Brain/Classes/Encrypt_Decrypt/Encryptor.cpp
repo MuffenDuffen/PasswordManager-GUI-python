@@ -50,7 +50,7 @@ std::wstring cEncryptor::ToHex(const std::wstring input)
     return cHexStuff::ToHex(input);
 }
 
-void cEncryptor::CharAdder(const std::wstring& input, const std::wstring pass_phrase)
+void cEncryptor::CharAdder(std::wstring& input, const std::wstring pass_phrase)
 {
     return cCharAdder::CharAdder(input, pass_phrase);
 }

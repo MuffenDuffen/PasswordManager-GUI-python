@@ -23,7 +23,7 @@ public:
 
     DDLL static std::wstring ToHex(std::wstring input);
 
-    DDLL static void CharAdder(const std::wstring& input, std::wstring pass_phrase);
+    DDLL static void CharAdder(std::wstring& input, const std::wstring pass_phrase);
 
     DDLL static void PythagoranTheoremE(std::wstring& input);
 

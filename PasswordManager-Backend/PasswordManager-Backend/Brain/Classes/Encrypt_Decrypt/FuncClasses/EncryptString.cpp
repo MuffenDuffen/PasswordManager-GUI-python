@@ -3,34 +3,48 @@
 
 const wchar_t* cEncryptString::EncryptString(std::wstring input, const std::vector<unsigned long long> key, const unsigned long long encrypt_shift, const std::wstring pass_phrase)
 {
+    auto e = new cEncryptor();
+    
     for (const auto k : key)
     {
         switch (k)
         {
             case 0:
-                cEncryptor::NextChar(input);
+                e->NextChar(input);
+                break;
             case 1:
-                cEncryptor::InvertBits(input);
+                e->InvertBits(input);
+                break;
             case 2:
                 input = cEncryptor::Latinizer(input);
+                break;
             case 3:
-                cEncryptor::Ceasarion(input, encrypt_shift);
+                e->Ceasarion(input, encrypt_shift);
+                break;
             case 4:
                 input = cEncryptor::ToRomanNumeral(input);
+                break;
             case 5:
                 input = cEncryptor::ToHex(input);
+                break;
             case 6:
-                cEncryptor::CharAdder(input, pass_phrase);
+                e->CharAdder(input, pass_phrase);
+                break;
             case 7:
-                cEncryptor::PythagoranTheoremE(input);
+                e->PythagoranTheoremE(input);
+                break;
             case 8:
-                cEncryptor::ReverseString(input);
+                e->ReverseString(input);
+                break;
             case 9:
                 input = cEncryptor::LoLifier(input);
+                break;
             case 10:
-                cEncryptor::Circ(input);
+                e->Circ(input);
+                break;
             case 11:
-                cEncryptor::BitReverser(input);
+                e->BitReverser(input);
+                break;
         default: ;
         }
     }

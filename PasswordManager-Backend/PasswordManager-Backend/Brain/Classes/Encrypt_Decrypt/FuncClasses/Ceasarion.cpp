@@ -1,10 +1,13 @@
 ﻿#include "Ceasarion.h"
 
-void cCeasarion::CeasarionE(std::wstring& input, unsigned long long encrypt_shift)
+#include <iostream>
+
+void cCeasarion::CeasarionE(std::wstring& input, const unsigned long long encrypt_shift)
 {
-    for (auto& c : input)
+    for (auto i = 0; i < input.length(); i++)
     {
-        c += encrypt_shift;
+        std::cout << "LeL" << std::endl;
+        input[i] = input[i] += encrypt_shift;
     }
 }
 
