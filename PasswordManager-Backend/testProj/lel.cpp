@@ -11,16 +11,16 @@ int main()
 
     auto enc = new cEncryptor();
     auto dec = new cDecryptor();
-    
-    auto credStuff = new cCredentialStuff();
 
-    std::wstring mPass = L"HahaIsakIsBad245";
+    const auto credStuff = new cCredentialStuff();
+
+    const std::wstring mPass = L"HahaIsakIsBad245";
 
     const auto key = credStuff->GetEncryptionKey(mPass);
     const auto shift = credStuff->GetShift(mPass);
     const auto passPhrase = credStuff->GetPassPhrase(mPass);
 
-    auto k = new std::vector<unsigned long long>();
+    const auto k = new std::vector<unsigned long long>();
 
     k->push_back(0);
     k->push_back(1);
@@ -34,12 +34,6 @@ int main()
     k->push_back(9);
     k->push_back(10);
     k->push_back(11);
-    
-    const std::wstring txt = L"eager";
-
-    const auto e = enc->EncryptString(txt, *k, shift, passPhrase);
-
-    auto d = dec->DecryptString(e, *k, shift, passPhrase);
     
     return 0;
 }
