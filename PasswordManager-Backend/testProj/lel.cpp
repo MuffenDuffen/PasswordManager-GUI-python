@@ -18,24 +18,20 @@ int main()
     const auto shift = cred->GetShift(mPass);
     const auto passPhrase = cred->GetPassPhrase(mPass);
 
-    auto k = new std::vector<unsigned long long>();
-
-    k->push_back(0);
-    k->push_back(1);
-    k->push_back(2);
-    k->push_back(3);
-    k->push_back(4);
-    k->push_back(5);
-    k->push_back(6);
-    k->push_back(7);
-    k->push_back(8);
-    k->push_back(9);
-    k->push_back(10);
-    k->push_back(11);
+    std::wstring txt = L"LeL";
     
-    const std::wstring e = enc->EncryptString(mPass, *k, shift, passPhrase);
-    
-    const std::wstring d = decr->DecryptString(e, *k, shift, passPhrase);
+    enc->NextChar(txt);
+    enc->InvertBits(txt);
+    txt = enc->Latinizer(txt);
+    enc->Ceasarion(txt, shift);
+    txt = enc->ToRomanNumeral(txt);
+    txt = enc->ToHex(txt);
+    enc->CharAdder(txt, passPhrase);
+    enc->PythagoranTheoremE(txt);
+    enc->ReverseString(txt);
+    txt = enc->LoLifier(txt);
+    enc->Circ(txt);
+    enc->BitReverser(txt);
     
     return 0;
 }

@@ -7,9 +7,7 @@
 class cEncryptor
 {
 public:
-    DDLL static std::wstring EncryptString(const std::wstring input, std::vector<unsigned long long> key,
-                                           const unsigned long long encrypt_shift, const std::wstring
-                                           pass_phrase);
+    DDLL static std::wstring EncryptString(const std::wstring input, std::vector<unsigned long long> key, const unsigned long long encrypt_shift, const std::wstring  pass_phrase);
     
     DDLL static void NextChar(std::wstring& input);
 

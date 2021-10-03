@@ -13,12 +13,12 @@ void cCirc::ReversedGetCircumferenceOfCharWithEntireText(const std::wstring& inp
     for (auto c : input) c = ReversedGetCircumferenceOfChar(c);
 }
 
-char cCirc::GetCircumferenceOfChar(const char c)
+wchar_t cCirc::GetCircumferenceOfChar(const wchar_t c)
 {
-    return static_cast<char>(round(c * std::_Pi));
+    return static_cast<wchar_t>(round(c * std::_Pi));
 }
 
-char cCirc::ReversedGetCircumferenceOfChar(const char c)
+wchar_t cCirc::ReversedGetCircumferenceOfChar(const wchar_t c)
 {
-    return static_cast<char>(round(c / std::_Pi));
+    return static_cast<wchar_t>(round(c / std::_Pi));
 }

@@ -7,6 +7,6 @@ public:
     static void GetCircumferenceOfCharWithEntireText(const std::wstring& input);
     static void ReversedGetCircumferenceOfCharWithEntireText(const std::wstring& input);
     
-    static char GetCircumferenceOfChar(char c);
-    static char ReversedGetCircumferenceOfChar(char c);
+    static wchar_t GetCircumferenceOfChar(const wchar_t c);
+    static wchar_t ReversedGetCircumferenceOfChar(const wchar_t c);
 };
