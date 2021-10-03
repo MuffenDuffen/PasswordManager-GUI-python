@@ -1,81 +1,139 @@
 ﻿#include "Decryptor.h"
 
-#include "FuncClasses/BitReverser.h"
-#include "FuncClasses/Ceasarion.h"
-#include "FuncClasses/Char.h"
-#include "FuncClasses/CharAdder.h"
-#include "FuncClasses/Circ.h"
-#include "FuncClasses/EncryptString.h"
-#include "FuncClasses/HexStuff.h"
-#include "FuncClasses/InvertBits.h"
-#include "FuncClasses/Latinizer.h"
-#include "FuncClasses/LoLifier.h"
-#include "FuncClasses/PythagoranTheorem.h"
-#include "FuncClasses/Reverse.h"
-#include "FuncClasses/RNS.h"
+#include <algorithm>
+#include <random>
 
-std::wstring cDecryptor::DecryptString(const std::wstring input, const std::vector<unsigned long long> key,
+#include "HexStuffBackend/HexStuff.h"
+#include "HexStuffBackend/HexStuffBackend.h"
+#include "LatinizeBackend/Latinizer.h"
+#include "RNSBackend/RNS.h"
+
+std::wstring cDecryptor::DecryptString(std::wstring input, std::vector<unsigned long long> key,
                                        const unsigned long long encrypt_shift, const std::wstring pass_phrase)
 {
-    return cEncryptString::DeryptString(input, key, encrypt_shift, pass_phrase);
+    std::ranges::reverse(key);
+
+    for (const auto k : key)
+    {
+        switch (k)
+        {
+        case 0:
+            PrevChar(input);
+            break;
+        case 1:
+            InvertBits(input);
+            break;
+        case 2:
+            input = cLatinizer::LatinToString(input);
+            break;
+        case 3:
+            Caesarion(input, encrypt_shift);
+            break;
+        case 4:
+            input = cRns::RomanNumeralToString(input);
+            break;
+        case 5:
+            input = cHexStuff::FromHex(input);
+            break;
+        case 6:
+            CharRemover(input, pass_phrase);
+            break;
+        case 7:
+            PythagoreanD(input);
+            break;
+        case 8:
+            ReverseString(input);
+            break;
+        case 9:
+            UnStringLoLifier(input);
+            break;
+        case 10:
+            DeCircumferanceOfString(input);
+            break;
+        case 11:
+            BitReverser(input);
+        default: ;
+        }
+    }
+    
+    return input;
 }
 
 void cDecryptor::PrevChar(std::wstring& input)
 {
-    return cChar::PrevChar(input);
+    for (auto& c : input)
+    {
+        c -= 1;
+    }
 }
 
 void cDecryptor::InvertBits(std::wstring& input)
 {
-    return cInvertBits::InvertBits(input);
+    for (auto& c : input)
+    {
+        c = ~c;
+    }
 }
 
-std::wstring cDecryptor::LatinizerD(const std::wstring input)
+void cDecryptor::Caesarion(std::wstring& input, const unsigned long long encrypt_shift)
 {
-    return cLatinizer::LatinToString(input);
+    for (auto& c : input)
+    {
+        c -= encrypt_shift;
+    }
 }
 
-void cDecryptor::CeasarionD(std::wstring& input, const unsigned long long encrypt_shift)
+void cDecryptor::CharRemover(std::wstring& input, const std::wstring pass_phrase)
 {
-    return cCeasarion::CeasarionD(input, encrypt_shift);
+    for (auto& c : input)
+    {
+        for (const auto cc : pass_phrase)
+        {
+            c -= cc;
+        }
+    }
 }
 
-std::wstring cDecryptor::FromRomanNumeral(const std::wstring input)
+void cDecryptor::PythagoreanD(std::wstring& input)
 {
-    return cRns::RomanNumeralToString(input);
-}
-
-std::wstring cDecryptor::FromHex(const std::wstring input)
-{
-    return cHexStuff::FromHex(input);
-}
-
-void cDecryptor::CharRemover(const std::wstring& input, const std::wstring pass_phrase)
-{
-    return cCharAdder::CharRemover(input, pass_phrase);
-}
-
-void cDecryptor::PythagoranTheoremD(std::wstring& input)
-{
-    return cPythagoranTheorem::PythagoranTheoremD(input);
+    for (auto& c : input)
+    {
+        c = static_cast<wchar_t>(round(sqrt(pow(c, 2) / 2)));
+    }
 }
 
 void cDecryptor::ReverseString(std::wstring& input)
 {
-    return cReverse::ReverseString(input);
+    std::ranges::reverse(input);
 }
 
-std::wstring cDecryptor::LoLifierD(const std::wstring input)
+void cDecryptor::UnStringLoLifier(std::wstring& input)
 {
-    return cLoLifier::UnLoLifier(input);
+    std::wstring result = L"";
+    
+    for (int i = 0; i < input.length(); i++)
+    {
+        if (!(i % 2 == 0 && input[i] == L'L')) result += input[i];
+    }
+
+    input = result;
 }
 
-void cDecryptor::CircD(const std::wstring& input)
+void cDecryptor::DeCircumferanceOfString(std::wstring& input)
 {
-    return cCirc::ReversedGetCircumferenceOfCharWithEntireText(input);
+    for (auto& c : input) c = static_cast<wchar_t>(round(c / std::_Pi));
 }
 
-void cDecryptor::BitReverserD(std::wstring& input)
+void cDecryptor::BitReverser(std::wstring& input)
 {
-    return cBitReverser::BitReverserLeL(input);
+    for (auto& c : input)
+    {
+        auto binary = DecimalTo(c, 2);
+
+        while (binary.length() < 16) binary.insert(0, L"0");
+
+        std::ranges::reverse(binary);
+
+        c = std::stoi(binary, nullptr, 2);
+    }
 }

@@ -3,7 +3,6 @@
 #include <algorithm>
 
 #include "../../Random/Random.h"
-#include "../Encrypt_Decrypt/FuncClasses/Reverse.h"
 
 std::vector<unsigned long long> cCredentialStuff::GetEncryptionKey(const std::wstring master_password)
 {

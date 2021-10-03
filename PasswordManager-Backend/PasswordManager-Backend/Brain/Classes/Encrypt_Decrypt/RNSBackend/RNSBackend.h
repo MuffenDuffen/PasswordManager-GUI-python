@@ -3,7 +3,7 @@
 
 inline std::wstring ToRoman(const int number)
 {
-    if ((number < 0) || (number > 3999)) throw "insert value betwheen 1 and 3999";
+    if ((number < 0) || (number > 3999)) throw "insert value between 1 and 3999";
     if (number < 1) return L"";            
     if (number >= 1000) return L"M," + ToRoman(number - 1000);
     if (number >= 900) return L"CM," + ToRoman(number - 900); 
@@ -21,9 +21,9 @@ inline std::wstring ToRoman(const int number)
     throw "something bad happened";
 }
 
-inline int FromRoman(std::wstring input)
+inline int FromRoman(const std::wstring input)
 {
-    auto map = new std::map<std::wstring, int>{
+    const auto map = new std::map<std::wstring, int>{
         {L"M", 1000},
         {L"CM", 900},
         {L"D" , 500},
@@ -41,9 +41,7 @@ inline int FromRoman(std::wstring input)
     
     int result = 0;
 
-    auto nums = Split(input, L",");
-
-    for (auto n : nums)
+    for (const auto nums = Split(input, L","); auto n : nums)
     {
         result += map->at(n);
     }
