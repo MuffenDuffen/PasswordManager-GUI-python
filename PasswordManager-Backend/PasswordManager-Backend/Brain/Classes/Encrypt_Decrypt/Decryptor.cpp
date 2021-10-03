@@ -14,7 +14,8 @@
 #include "FuncClasses/Reverse.h"
 #include "FuncClasses/RNS.h"
 
-const wchar_t* cDecryptor::DecryptString(const std::wstring input, const std::vector<unsigned long long> key, const unsigned long long encrypt_shift, const std::wstring pass_phrase)
+std::wstring cDecryptor::DecryptString(const std::wstring input, const std::vector<unsigned long long> key,
+                                       const unsigned long long encrypt_shift, const std::wstring pass_phrase)
 {
     return cEncryptString::DeryptString(input, key, encrypt_shift, pass_phrase);
 }

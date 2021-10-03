@@ -15,7 +15,8 @@
 #include "FuncClasses/PythagoranTheorem.h"
 #include "FuncClasses/Reverse.h"
 
-const wchar_t* cEncryptor::EncryptString(const std::wstring input, const std::vector<unsigned long long> key, const unsigned long long encrypt_shift, const std::wstring pass_phrase)
+std::wstring cEncryptor::EncryptString(const std::wstring input, const std::vector<unsigned long long> key,
+                                       const unsigned long long encrypt_shift, const std::wstring pass_phrase)
 {
     return cEncryptString::EncryptString(input, key, encrypt_shift, pass_phrase);
 }

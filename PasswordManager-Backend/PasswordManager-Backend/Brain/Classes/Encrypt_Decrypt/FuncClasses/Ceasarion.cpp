@@ -6,7 +6,6 @@ void cCeasarion::CeasarionE(std::wstring& input, const unsigned long long encryp
 {
     for (auto i = 0; i < input.length(); i++)
     {
-        std::cout << "LeL" << std::endl;
         input[i] = input[i] += encrypt_shift;
     }
 }

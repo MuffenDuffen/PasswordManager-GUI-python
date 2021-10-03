@@ -4,9 +4,9 @@
 class cDecryptor
 {
 public:
-    DDLL static const wchar_t* DecryptString(const std::wstring input, std::vector<unsigned long long> key,
-                                             const unsigned long long encrypt_shift, const std::wstring
-                                             pass_phrase);
+    DDLL static std::wstring DecryptString(const std::wstring input, std::vector<unsigned long long> key,
+                                           const unsigned long long encrypt_shift, const std::wstring
+                                           pass_phrase);
     
     DDLL static void PrevChar(std::wstring& input);
 
