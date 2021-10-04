@@ -34,6 +34,12 @@ int main()
     k->push_back(9);
     k->push_back(10);
     k->push_back(11);
+
+    const std::wstring name = L"Test";
+    const std::wstring email = L"Test99480@gmail.com";
+    const std::wstring password = L"TestPass123LeL";
+
+    const auto simulatedPythonCred = std::to_wstring(name.length()) + L"," + std::to_wstring(email.length()) + L"," + std::to_wstring(password.length()) + L" " + name + email + password;
     
     return 0;
 }

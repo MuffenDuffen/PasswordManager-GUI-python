@@ -1,8 +1,11 @@
 ﻿#include "Credential.h"
 
 #include <algorithm>
+#include <iostream>
 
 #include "../../Random/Random.h"
+#include "../Encrypt_Decrypt/Encryptor.h"
+#include "../Encrypt_Decrypt/Decryptor.h"
 
 std::vector<unsigned long long> cCredentialStuff::GetEncryptionKey(const std::wstring master_password)
 {
@@ -95,4 +98,51 @@ std::wstring cCredentialStuff::GetPassPhrase(std::wstring master_password)
     std::ranges::reverse(master_password);
     
     return lel;
+}
+
+cCredentialStuff::cCred cCredentialStuff::PythonCredToCpp(const std::wstring python_cred)
+{
+    auto cred = new cCred(L"", L"", L"");
+
+    const int firstComma = python_cred.find(L',', 0);
+    const int secondComma = python_cred.find(L',', firstComma+1);
+    const int spacePos = python_cred.find(L' ', 0);
+    
+    const int nameLength = _wtoi(python_cred.substr(0, firstComma).c_str());
+    const int emailLength = _wtoi(python_cred.substr(firstComma+1, secondComma).c_str());
+    const int passwordLength = _wtoi(python_cred.substr(secondComma+1, spacePos).c_str());
+
+    cred->Name = python_cred.substr(spacePos+1, nameLength);
+    cred->Email = python_cred.substr(spacePos+nameLength+1, emailLength);
+    cred->Password = python_cred.substr(spacePos+nameLength+emailLength+1);
+    
+    return *cred;
+}
+
+std::wstring cCredentialStuff::EncryptCppCred(const std::wstring cred_python, const std::vector<unsigned long long> key, const unsigned long long shift, std::wstring pass_phrase)
+{
+    const auto credFromPython = PythonCredToCpp(cred_python);
+    const auto newCred = new cCred(L"", L"", L"");
+    
+    newCred->Name = cEncryptor::EncryptString(credFromPython.Name, key, shift, pass_phrase);
+    newCred->Email = cEncryptor::EncryptString(credFromPython.Email, key, shift, pass_phrase);
+    newCred->Password = cEncryptor::EncryptString(credFromPython.Password, key, shift, pass_phrase);
+
+    auto encryptedCred = std::to_wstring(newCred->Name.length()) + L"," + std::to_wstring(newCred->Email.length()) + L"," + std::to_wstring(newCred->Password.length()) + L" " + newCred->Name + newCred->Email + newCred->Password;
+    
+    return encryptedCred;
+}
+
+std::wstring cCredentialStuff::DecryptCppCred(const std::wstring cred_python, const std::vector<unsigned long long> key, const unsigned long long shift, const std::wstring pass_phrase)
+{
+    const auto credFromPython = PythonCredToCpp(cred_python);
+    const auto newCred = new cCred(L"", L"", L"");
+    
+    newCred->Name = cDecryptor::DecryptString(credFromPython.Name, key, shift, pass_phrase);
+    newCred->Email = cDecryptor::DecryptString(credFromPython.Email, key, shift, pass_phrase);
+    newCred->Password = cDecryptor::DecryptString(credFromPython.Password, key, shift, pass_phrase);
+
+    auto encryptedCred = std::to_wstring(newCred->Name.length()) + L"," + std::to_wstring(newCred->Email.length()) + L"," + std::to_wstring(newCred->Password.length()) + L" " + newCred->Name + newCred->Email + newCred->Password;
+    
+    return encryptedCred;
 }
