@@ -15,31 +15,8 @@ extern "C" {
 		std::cout << std::endl;
 	}
 
-	DLL bool CheckPass(const wchar_t* password, const std::vector<unsigned long long> key, const unsigned long long encrypt_shift, const std::wstring pass_phrase)
+	DLL void CreateFile()
 	{
-		std::wcout << cEncryptor::EncryptString(password, key, encrypt_shift, pass_phrase) << std::endl;
-		return true;
-	}
-
-	DLL const char* GetCredentials()
-	{
-		const char* result = new const char[12]("L\x1fo\x1fL\x1dL\x1fo\x1fL");
-		return result;
-	}
-
-	DLL void Free(const void* ptr, const int type)
-	{
-		std::cout << "Deleting object at " << ptr << std::endl;
-
-		switch (type)
-		{
-		case 0: 
-			delete[] static_cast<const char*>(ptr);
-			break;
-		case 1: 
-			delete[] static_cast<const int*>(ptr);
-			break;
-		default: ;
-		}
+		
 	}
 }
