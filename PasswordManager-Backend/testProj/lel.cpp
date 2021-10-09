@@ -10,6 +10,7 @@ int main()
     std::cout << "Gello, World!" << std::endl;
 
     const std::wstring mPass = L"HahaIsakIsBad245";
+    auto passDetails = new cGenerator::cPassDetails(mPass);
 
     const auto creds = new std::vector<cCredentialStuff::cCred>();
 
@@ -18,8 +19,7 @@ int main()
     creds->push_back(cCredentialStuff::cCred(L"testName3", L"testEmail3", L"testPasswordLeLOfDoomLeL3"));
     creds->push_back(cCredentialStuff::cCred(L"testName4", L"testEmail4", L"testPasswordLeLOfDoomLeL4"));
     creds->push_back(cCredentialStuff::cCred(L"testName5", L"testEmail5", L"testPasswordLeLOfDoomLeL5"));
-    
-    auto passDetails = new cGenerator::cPassDetails(mPass);
+
 
     const auto filer = new cFiler();
 
