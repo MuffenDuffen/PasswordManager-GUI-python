@@ -1,33 +1,24 @@
-#include "Filer.h"
+﻿#include "Filer.h"
 
-#include <iostream>
-#include <vector>
 #include <fstream>
 
+#include "../ConversionStuff/Converter.h"
 #include "../CredentialStuff/Credential.h"
 
-void cFiler::CreateFile(const std::wstring name, const std::wstring master_password, const std::wstring email)
+void cFiler::SaveFile(const std::string& filename, const std::wstring& name, const std::wstring& email, const std::wstring& m_pass)
 {
-    const auto key = new std::vector<unsigned long long>{0,1,2,3,4,5,6,7,8,9,10,11};
-    const auto shift = cCredentialStuff::GetShift(master_password);
-    const auto passPhrase = cCredentialStuff::GetPassPhrase(master_password);
+    const auto file = new std::wofstream(filename);
 
-    const std::hash<std::wstring> hasher;
+    const auto binaryLines = new std::vector<std::wstring>();
 
-    const auto hashedMasterPassword = hasher(master_password);
+    binaryLines->push_back(cConverter::SToBin(name));
+    binaryLines->push_back(cConverter::SToBin(email));
+    binaryLines->push_back(cConverter::SToBin(m_pass));
 
-    const auto lines = new std::vector<std::wstring>();
-
-    lines->push_back(cEncryptor::EncryptString(name, *key, shift, passPhrase));
-    lines->push_back(cEncryptor::EncryptString(std::to_wstring(hashedMasterPassword), *key, shift, passPhrase));
-    lines->push_back(cEncryptor::EncryptString(email, *key, shift, passPhrase));
-
-    const auto file = new std::wofstream("data.txt");
-
-    for (auto l : *lines)
+    for (auto line : *binaryLines)
     {
-        auto lcStr = l.c_str();
-
-        file << lcStr;
+        *file << line + L"\n";
     }
+
+    file->close();
 }

@@ -8,9 +8,9 @@ private:
     const int _mseed = 161803398;
     const int _mz = 0;
 
-    int inext;
-    int inextp;
-    int *_seed_array = new int[56]();
+    int _inext;
+    int _inextp;
+    int* _seed_array = new int[56]();
 
     double Sample();
     double GetSampleForLargeRange();

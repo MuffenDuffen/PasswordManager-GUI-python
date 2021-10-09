@@ -1,8 +1,9 @@
-#pragma once
+﻿#pragma once
+#include "../CredentialStuff/Credential.h"
 #include "../Encrypt_Decrypt/Encryptor.h"
 
 class cFiler
 {
 public:
-    DDLL static void CreateFile(std::wstring name, std::wstring master_password, std::wstring email);
+    DDLL static void SaveFile(const std::string& filename, const std::wstring& name, const std::wstring& email, const std::wstring& m_pass);
 };

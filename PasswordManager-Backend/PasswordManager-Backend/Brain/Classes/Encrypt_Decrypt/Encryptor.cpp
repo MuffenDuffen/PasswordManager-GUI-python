@@ -8,49 +8,49 @@
 #include "LatinizeBackend/Latinizer.h"
 #include "RNSBackend/RNS.h"
 
-std::wstring cEncryptor::EncryptString(std::wstring input, std::vector<unsigned long long> key,
+std::wstring cEncryptor::EncryptString(std::wstring input, const std::vector<unsigned long long> key,
                                        const unsigned long long encrypt_shift, const std::wstring pass_phrase)
 {
     for (const auto k : key)
     {
         switch (k)
         {
-            case 0:
-                NextChar(input);
-                break;
-            case 1:
-                InvertBits(input);
-                break;
-            case 2:
-                input = cLatinizer::StringToLatin(input);
-                break;
-            case 3:
-                Caesarion(input, encrypt_shift);
-                break;
-            case 4:
-                input = cRns::StringToRomanNumeral(input);
-                break;
-            case 5:
-                input = cHexStuff::ToHex(input);
-                break;
-            case 6:
-                CharAdder(input, pass_phrase);
-                break;
-            case 7:
-                PythagoreanE(input);
-                break;
-            case 8:
-                ReverseString(input);
-                break;
-            case 9:
-                StringLoLifier(input);
-                break;
-            case 10:
-                CircumferanceOfString(input);
-                break;
-            case 11:
-                BitReverser(input);
-            default: ;
+        case 0:
+            NextChar(input);
+            break;
+        case 1:
+            InvertBits(input);
+            break;
+        case 2:
+            input = cLatinizer::StringToLatin(input);
+            break;
+        case 3:
+            Caesar(input, encrypt_shift);
+            break;
+        case 4:
+            input = cRns::StringToRomanNumeral(input);
+            break;
+        case 5:
+            input = cHexStuff::ToHex(input);
+            break;
+        case 6:
+            CharAdder(input, pass_phrase);
+            break;
+        case 7:
+            PythagoreanE(input);
+            break;
+        case 8:
+            ReverseString(input);
+            break;
+        case 9:
+            StringLoLifier(input);
+            break;
+        case 10:
+            CircumferencesOfString(input);
+            break;
+        case 11:
+            BitReverser(input);
+        default: ;
         }
     }
 
@@ -73,7 +73,7 @@ void cEncryptor::InvertBits(std::wstring& input)
     }
 }
 
-void cEncryptor::Caesarion(std::wstring& input, const unsigned long long encrypt_shift)
+void cEncryptor::Caesar(std::wstring& input, const unsigned long long encrypt_shift)
 {
     for (auto& c : input)
     {
@@ -113,9 +113,9 @@ void cEncryptor::StringLoLifier(std::wstring& input)
     }
 }
 
-void cEncryptor::CircumferanceOfString(std::wstring& input)
+void cEncryptor::CircumferencesOfString(std::wstring& input)
 {
-    for (auto& c : input) c = static_cast<wchar_t>(round(c*std::_Pi));
+    for (auto& c : input) c = static_cast<wchar_t>(round(c * std::_Pi));
 }
 
 void cEncryptor::BitReverser(std::wstring& input)

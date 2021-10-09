@@ -20,7 +20,7 @@ public:
             Password = password;
         }
     };
-    
+
     //Generation of stuff used for encryption/decryption
     DDLL static std::vector<unsigned long long> GetEncryptionKey(std::wstring master_password);
     DDLL static unsigned long long GetShift(std::wstring master_password);
@@ -28,8 +28,9 @@ public:
 
     //ConversionStuff
     DDLL static cCred PythonCredToCpp(std::wstring python_cred);
-    
+    DDLL static std::wstring CppCredToPython(cCred c);
+
     //Encrypt/Decrypt
-    DDLL static std::wstring EncryptCppCred(const std::wstring cred_python, const std::vector<unsigned long long> key, const unsigned long long shift, std::wstring pass_phrase);
-    DDLL static std::wstring DecryptCppCred(const std::wstring cred_python, const std::vector<unsigned long long> key, const unsigned long long shift, std::wstring);
+    DDLL static std::wstring EncryptCppCred(std::wstring cred_python, std::vector<unsigned long long> key, unsigned long long shift, std::wstring pass_phrase);
+    DDLL static std::wstring DecryptCppCred(std::wstring cred_python, std::vector<unsigned long long> key, unsigned long long shift, std::wstring);
 };
