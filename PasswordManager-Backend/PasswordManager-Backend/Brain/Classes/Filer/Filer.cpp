@@ -29,7 +29,7 @@ void cFiler::SaveFile(const std::string& filename, const std::wstring& name, con
     file->close();
 }
 
-void cFiler::ReadFile(const std::string& filename, const cGenerator::cPassDetails& pass_details)
+void cFiler::ReadFile(const std::string& filename, const cGenerator::cPassDetails& pass_details, std::vector<std::wstring>& cred)
 {
     const auto file = new std::ifstream(filename);
 
@@ -60,7 +60,10 @@ void cFiler::ReadFile(const std::string& filename, const cGenerator::cPassDetail
         decodedLines->push_back(result);
     }
 
-    const auto cred = cCredentialStuff::DecryptCppCred(decodedLines->at(3), pass_details.Key, pass_details.Shift, pass_details.Pass_Phrase);
+    for (int i = 3; i < decodedLines->size(); i++)
+    {
+        auto lel = std::wstring(cCredentialStuff::DecryptCppCred(decodedLines->at(i), pass_details.Key, pass_details.Shift, pass_details.Pass_Phrase));
 
-    std::wcout << cred << std::endl;
+        cred.push_back(lel);
+    }
 }
