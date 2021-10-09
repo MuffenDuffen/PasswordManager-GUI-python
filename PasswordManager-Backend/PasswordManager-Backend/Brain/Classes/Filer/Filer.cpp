@@ -5,7 +5,6 @@
 #include <sstream>
 
 #include "../ConversionStuff/Converter.h"
-#include "../Encrypt_Decrypt/Decryptor.h"
 
 void cFiler::SaveFile(const std::string& filename, const std::wstring& name, const std::wstring& email, const std::wstring& m_pass, std::vector<cCredentialStuff::cCred>& creds, const cGenerator::cPassDetails& pass_details)
 {
@@ -13,6 +12,8 @@ void cFiler::SaveFile(const std::string& filename, const std::wstring& name, con
 
     const auto binaryLines = new std::vector<std::wstring>();
 
+    binaryLines->push_back(cConverter::SToBin(cEncryptor::EncryptString(name, pass_details.Key, pass_details.Shift, pass_details.Pass_Phrase)));
+    binaryLines->push_back(cConverter::SToBin(cEncryptor::EncryptString(email, pass_details.Key, pass_details.Shift, pass_details.Pass_Phrase)));
     binaryLines->push_back(cConverter::SToBin(cEncryptor::EncryptString(m_pass, pass_details.Key, pass_details.Shift, pass_details.Pass_Phrase)));
 
     for (auto line : *binaryLines)
@@ -59,7 +60,7 @@ void cFiler::ReadFile(const std::string& filename, const cGenerator::cPassDetail
         decodedLines->push_back(result);
     }
 
-    const auto pass = cDecrypt::DecryptString(decodedLines->at(0), pass_details.Key, pass_details.Shift, pass_details.Pass_Phrase);
+    const auto cred = cCredentialStuff::DecryptCppCred(decodedLines->at(3), pass_details.Key, pass_details.Shift, pass_details.Pass_Phrase);
 
-    std::wcout << pass << std::endl;
+    std::wcout << cred << std::endl;
 }

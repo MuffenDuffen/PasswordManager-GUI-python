@@ -13,6 +13,8 @@ int main()
 
     const auto creds = new std::vector<cCredentialStuff::cCred>();
 
+    creds->push_back(cCredentialStuff::cCred(L"testName", L"testEmail", L"testPasswordLeLOfDoom"));
+
     auto passDetails = new cGenerator::cPassDetails(mPass);
 
     const auto filer = new cFiler();
