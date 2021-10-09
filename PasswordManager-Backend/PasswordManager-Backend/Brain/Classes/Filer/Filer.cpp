@@ -60,6 +60,6 @@ void cFiler::ReadFile(const std::string& filename, const cGenerator::cPassDetail
     }
 
     const auto pass = cDecrypt::DecryptString(decodedLines->at(0), pass_details.Key, pass_details.Shift, pass_details.Pass_Phrase);
-    
+
     std::wcout << pass << std::endl;
 }
