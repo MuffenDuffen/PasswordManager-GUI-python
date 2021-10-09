@@ -21,6 +21,4 @@ public:
             Pass_Phrase = cCredentialStuff::GetPassPhrase(master_password);
         }
     };
-
-    void* generatePassDetails(const std::wstring& master_password);
 };

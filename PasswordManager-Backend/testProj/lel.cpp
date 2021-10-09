@@ -3,6 +3,7 @@
 
 #include "../PasswordManager-Backend/Brain/Classes/CredentialStuff/Credential.h"
 #include "../PasswordManager-Backend/Brain/Classes/Filer/Filer.h"
+#include "../PasswordManager-Backend/Brain/Classes/GenerationOfStuff/Generator.h"
 
 int main()
 {
@@ -10,14 +11,13 @@ int main()
 
     const std::wstring mPass = L"HahaIsakIsBad245";
 
-    const auto key = new std::vector<unsigned long long>{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-    const auto shift = cCredentialStuff::GetShift(mPass);
-    const auto passPhrase = cCredentialStuff::GetPassPhrase(mPass);
     const auto creds = new std::vector<cCredentialStuff::cCred>();
+
+    auto passDetails = new cGenerator::cPassDetails(mPass);
 
     const auto filer = new cFiler();
 
-    filer->SaveFile("data.txt", L"Test", L"test99480@gmail.com", mPass);
-
+    filer->SaveFile("data.txt", L"Test", L"test99480@gmail.com", mPass, *creds, *passDetails);
+    filer->ReadFile("data.txt", *passDetails);
     return 0;
 }

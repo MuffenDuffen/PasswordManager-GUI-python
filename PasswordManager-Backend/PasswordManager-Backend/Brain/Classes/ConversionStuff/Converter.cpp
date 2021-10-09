@@ -1,5 +1,6 @@
 ﻿#include "Converter.h"
 
+#include <bitset>
 #include <iostream>
 
 std::wstring cConverter::SToBin(const std::wstring& input)
@@ -8,17 +9,9 @@ std::wstring cConverter::SToBin(const std::wstring& input)
 
     for (const auto c : input)
     {
-        const auto buffer = new char();
+        auto binary = std::bitset<16>(c).to_string();
 
-        _itoa_s(c, buffer, sizeof(buffer) / sizeof(char), 2);
-
-        auto binary = std::string(buffer);
-
-        while (binary.length() < 16) binary.insert(0, 1, '0');
-
-        auto binaryW = std::wstring(binary.begin(), binary.end());
-
-        result += binaryW + L" ";
+        result += std::wstring(binary.begin(), binary.end()) + L" ";
     }
 
     result = result.substr(0, result.length() - 1);
